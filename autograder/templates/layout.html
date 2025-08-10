@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SQL Autograder</title>
+  <!-- CSS lives directly under /static/, not /static/css/ -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <div class="nav-left">
+    {% if session.get('student_id') %}
+      <a href="{{ url_for('submit') }}">Submit</a>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('history') }}">History</a>
+      <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+  </div>
+
+  {% if session.get('student_id') %}
+  <div class="nav-right">
+    <span class="username">👋 {{ session.get('student_name', 'Student') }}</span>
+    <div class="dropdown">
+      <a href="#">Account ▼</a>
+      <div class="dropdown-content">
+        <a href="{{ url_for('change_password') }}">Change Password</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</header>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for msg in messages %}
+        <li class="error-message">{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<!-- key wrapper to get the card styling -->
+<div class="left-container">
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+</body>
+</html>

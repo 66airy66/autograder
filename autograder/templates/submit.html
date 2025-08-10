@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="left-container">
+  <h2>Submit Your SQL</h2>
+
+  <div style="margin-bottom: 20px; padding: 15px; background-color: #FFE8CD; border-radius: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <strong>Question:</strong>
+    <p style="margin-top: 8px; white-space: pre-wrap; font-family: Arial, sans-serif; font-size: 16px; color: #4a4a4a;">
+      {{ question.prompt }}
+    </p>
+  </div>
+
+  <p style="font-style: italic; color: #A66E3D; margin-bottom: 12px;">
+    Submit multiple statements separated by semicolons (;)
+  </p>
+
+  <form method="POST">
+    <textarea name="sql" rows="8" placeholder="Write your SQL query here..." required
+      style="width: 100%; padding: 12px; font-family: monospace; font-size: 15px; border-radius: 12px; border: 1px solid #FFD6BA; background-color: #FFF9F4; resize: vertical;"></textarea><br>
+    <button type="submit" style="
+      background-color: #FFD6BA;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #5a2a00;
+      font-weight: 600;
+    ">Submit</button>
+  </form>
+</div>
+{% endblock %}

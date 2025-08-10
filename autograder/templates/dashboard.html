@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="left-container" style="background-color: #FFF2EB; border-radius: 16px;">
+  <h2>Dashboard</h2>
+  {% if submissions %}
+    <table style="width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <thead>
+        <tr style="background-color: #FFD6BA;">
+          <th style="padding: 12px; border-bottom: 2px solid #FFE8CD; text-align: left;">Question</th>
+          <th style="padding: 12px; border-bottom: 2px solid #FFE8CD; text-align: left;">Submitted SQL</th>
+          <th style="padding: 12px; border-bottom: 2px solid #FFE8CD; text-align: center;">Score</th>
+          <th style="padding: 12px; border-bottom: 2px solid #FFE8CD; text-align: left;">Submitted At</th>
+          <th style="padding: 12px; border-bottom: 2px solid #FFE8CD; text-align: center;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sub in submissions %}
+          <tr style="background-color: white; border-bottom: 1px solid #FFE8CD;">
+            <td style="padding: 12px; font-weight: 600; vertical-align: top;">{{ sub.prompt }}</td>
+            <td style="padding: 12px; font-family: monospace; white-space: pre-wrap; vertical-align: top;">{{ sub.submitted_sql }}</td>
+            <td style="padding: 12px; text-align: center; vertical-align: top;">{{ sub.score }}</td>
+            <td style="padding: 12px; vertical-align: top;">{{ sub.submitted_at }}</td>
+            <td style="padding: 12px; text-align: center; vertical-align: top;">
+              <form action="{{ url_for('resubmit', submission_id=sub.id) }}" method="get" style="margin:0;">
+                <button type="submit" style="
+                  background-color: #E0BBE4;
+                  border: none;
+                  padding: 8px 14px;
+                  border-radius: 12px;
+                  cursor: pointer;
+                  font-size: 13px;
+                  color: #333;
+                ">Resubmit</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No submissions found.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="left-container">
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="font-size: 18px; font-weight: bold;">
+        🧑‍🎓 Your Current Rank:
+        <span style="color: #4CAF50;">
+          #{{ current_student.rank }} - {{ current_student.name }}
+        </span>
+      </div>
+      <h2>🏆 Leaderboard</h2>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: flex-end; margin: 40px 0 60px;">
+        {# --- Use a logical order for trophies (Gold, Silver, Bronze) --- #}
+        {% set trophy = ['🥇', '🥈', '🥉', '🪵'] %}
+        {# --- Set a max height for the bars to scale scores to --- #}
+        {% set max_bar_height = 100 %}
+
+        {% for person in top4 %}
+            {# --- Access average_score by index instead of key --- #}
+            {% set score = person.average_score %}
+            {% set rank_index = person.rank - 1 %}
+
+            {# Find the max score on the leaderboard to scale all other scores against it #}
+            {% set max_score_on_leaderboard = rankings[0].average_score if rankings else 1 %}
+
+            {# Calculate the height, ensuring a minimum height for visibility (e.g., 20px) #}
+            {% set bar_height = (score / max_score_on_leaderboard * max_bar_height)|int %}
+            {% if bar_height < 20 and score > 0 %}{% set bar_height = 20 %}{% endif %}
+
+            <div style="margin: 0 20px; text-align: center;">
+                <div style="
+                    background-color: #FFE8CD;
+                    height: {{ bar_height }}px;
+                    width: 60px;
+                    border-radius: 12px 12px 0 0;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 16px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                ">
+                    {{ person.average_score | int }}
+                </div>
+                <div style="margin-top: 10px; font-size: 20px;">
+                    {# --- Use the rank to pick the correct trophy --- #}
+                    {{ trophy[rank_index] if rank_index < trophy|length else trophy[-1] }}
+                </div>
+                <div style="font-size: 14px; margin-top: 5px;">
+                    #{{ person.rank }}<br>{{ person.name }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 10px; overflow: hidden;">
+        <thead>
+            <tr style="background-color: #FFD6BA;">
+                <th style="padding: 10px;">Rank</th>
+                <th style="padding: 10px;">Name</th>
+                <th style="padding: 10px;">Average Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rankings %}
+                <tr style="background-color: {% if row.id == current_student.id %}#E0BBE4{% else %}white{% endif %};">
+                    <td style="padding: 10px;">{{ row.rank }}</td>
+                    <td style="padding: 10px;">{{ row.name }}</td>
+                    <td style="padding: 10px;">{{ row.average_score | int }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

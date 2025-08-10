@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Resubmit for Question:</h3>
+<p>{{ question.prompt }}</p>
+<p><i>Previous SQL:</i></p>
+<pre>{{ old.submitted_sql }}</pre>
+<form method="POST">
+    <textarea name="sql" rows="6" cols="60"></textarea><br>
+    <button>Resubmit SQL</button>
+</form>
+{% endblock %}

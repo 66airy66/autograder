@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="left-container" style="background-color: #FFF2EB; border-radius: 16px; padding: 20px;">
+  <h2 style="background-color: #FFD6BA; padding: 14px; border-radius: 12px;">Submission History</h2>
+
+  <form action="/export_submissions" method="get" style="margin-bottom: 20px;">
+    <button type="submit" style="
+      background-color: #E0BBE4;
+      border: none;
+      padding: 10px 24px;
+      font-size: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #333;
+      font-weight: 600;
+    ">Export CSV</button>
+  </form>
+
+  {% if records %}
+    <table style="width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <thead>
+        <tr style="background-color: #FFD6BA;">
+          <th style="padding: 14px;">Question</th>
+          <th style="padding: 14px;">Submitted SQL</th>
+          <th style="padding: 14px;">Score</th>
+          <th style="padding: 14px;">Submitted At</th>
+          <th style="padding: 14px;">Status</th>
+          <th style="padding: 14px;">Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+        {% set late = record.submitted_at.date() > record.due_date %}
+        {% set correct_late = record.score == (record.max_score * 0.5 if late else record.max_score) %}
+        <tr style="background-color: white; border-bottom: 1px solid #FFE8CD;">
+          <td style="padding: 14px;">{{ record.prompt }}</td>
+          <td style="padding: 14px; font-family: monospace;">{{ record.submitted_sql }}</td>
+          <td style="padding: 14px; text-align: center;">{{ record.score }}</td>
+          <td style="padding: 14px;">{{ record.submitted_at }}</td>
+          <td style="padding: 14px; text-align: center;">
+            {% if correct_late %}
+              {% if late %}
+                <span style="color: #FFA726; font-weight: bold;">Correct (Late)</span>
+              {% else %}
+                <span style="color: #4CAF50; font-weight: bold;">Correct</span>
+              {% endif %}
+            {% else %}
+              <span style="color: #E53935; font-weight: bold;">Wrong</span>
+            {% endif %}
+          </td>
+          <td style="padding: 14px; text-align: center;">
+            {% if late %}
+              <span style="color: #FB8C00; font-weight: bold;">Late</span>
+            {% else %}
+              <span style="color: #2196F3; font-weight: bold;">On Time</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No submissions found.</p>
+  {% endif %}
+</div>
+{% endblock %}

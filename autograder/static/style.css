@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background-color: #FFF2EB;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+body.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.login-container {
+  background-color: #FFFFFF;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 350px;
+  border: 3px solid #FFD6BA;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  color: #FF8C42;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #FFE8CD;
+  border-radius: 12px;
+  background-color: #FFF9F4;
+  font-size: 14px;
+}
+
+button {
+  background-color: #FFD6BA;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #FFE8CD;
+}
+
+.error-message {
+  color: #D9534F;
+  background-color: #FFDCDC;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.register-btn {
+  margin-top: 10px;
+  background-color: #E0BBE4;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: #d6aee0;
+}
+
+.register-btn {
+  margin-top: 10px;
+  background-color: #E0BBE4;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background-color: #d6aee0;
+}
+
+.left-container {
+  max-width: 900px;
+  margin: 30px 50px;
+  padding: 20px 30px;
+  background-color: #FFF2EB; /* light cream */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.left-container h2 {
+  color: #FF8C42; /* same orange-ish header color */
+  font-family: 'Press Start 2P', cursive;
+  margin-bottom: 20px;
+}
+
+.left-container textarea,
+.left-container input[type="text"],
+.left-container input[type="password"],
+.left-container select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 20px;
+  border: 1px solid #FFE8CD;
+  border-radius: 12px;
+  background-color: #FFF9F4;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+.left-container button {
+  background-color: #FFD6BA;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.left-container button:hover {
+  background-color: #FFE8CD;
+}
+
+.left-container h2 {
+  background-color: #FFD6BA;
+  border-radius: 12px;
+  padding: 12px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: 'Press Start 2P', cursive;
+  color: #5a2a00;
+  margin-bottom: 20px;
+}
+
+/* === Header & Navigation Bar Styling === */
+header {
+  background-color: #FFD6BA;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.nav-left a,
+.nav-right a {
+  background-color: #FFE8CD;
+  color: #333;
+  text-decoration: none;
+  padding: 10px 16px;
+  margin-right: 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  background-color: #FFDCDC;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* === Account Dropdown === */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #FFF2EB;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  background-color: #FFE8CD;
+  font-size: 14px;
+  border-bottom: 1px solid #FFD6BA;
+}
+
+.dropdown-content a:hover {
+  background-color: #FFDCDC;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.username {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #5a2a00;
+}
+
+/* Green background for password page */
+.green-background {
+  background-color: #DFF5D8; /* pastel green */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Return to Dashboard button (pastel purple) */
+.dashboard-btn {
+  margin-top: 15px;
+  background-color: #E0BBE4;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.dashboard-btn:hover {
+  background-color: #d6aee0;
+}
