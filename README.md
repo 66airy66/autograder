@@ -2,27 +2,28 @@
 
 A Flask-based web application for submitting and automatically grading SQL queries against a predefined database.
 
-## 📂 Project Structure
+This is also hosted on [kanhampujar.pythonanywhere.com](https://kanhampujar.pythonanywhere.com/login)
 
-tcx2003project/
-├── autograder/
-│   ├── flask_app.py        # Main Flask application – handles routes, database logic, and authentication.
-│   ├── templates/          # HTML templates rendered by Flask.
-│   │   ├── layout.html     # Base layout file (navbar, flash messages, page structure).
-│   │   ├── login.html      # Login page for students.
-│   │   ├── register.html   # Student registration page.
-│   │   ├── dashboard.html  # Dashboard showing student’s progress and stats.
-│   │   ├── submit.html     # SQL submission form.
-│   │   ├── history.html    # Page showing all previous submissions for the student.
-│   │   └── leaderboard.html# Displays top students by score.
-│   ├── static/             # Static files (CSS, JS, images).
-│   │   └── css/
-│   │       └── style.css   # Main stylesheet for all pages.
-├── config.py               # Configuration file (DB credentials, secret key, debug flag).
-├── requirements.txt        # Python dependencies.
-├── kanhampujar_pythonanywhere_com_wsgi.py
-│                           # WSGI entry point for PythonAnywhere hosting.
-└── README.md               # This file.
+## 📂 Project Structure
+	tcx2003project/
+	├── autograder/
+	│   ├── flask_app.py        # Main Flask application – handles routes, database logic, and authentication.
+	│   ├── templates/          # HTML templates rendered by Flask.
+	│   │   ├── layout.html     # Base layout file (navbar, flash messages, page structure).
+	│   │   ├── login.html      # Login page for students.
+	│   │   ├── register.html   # Student registration page.
+	│   │   ├── dashboard.html  # Dashboard showing student’s progress and stats.
+	│   │   ├── submit.html     # SQL submission form.
+	│   │   ├── history.html    # Page showing all previous submissions for the student.
+	│   │   └── leaderboard.html# Displays top students by score.
+	│   ├── static/             # Static files (CSS, JS, images).
+	│   │   └── css/
+	│   │       └── style.css   # Main stylesheet for all pages.
+	├── config.py               # Configuration file (DB credentials, secret key, debug flag).
+	├── requirements.txt        # Python dependencies.
+	├── kanhampujar_pythonanywhere_com_wsgi.py
+	│                           # WSGI entry point for PythonAnywhere hosting.
+	└── README.md               # This file.
 
 ## ⚙️ How It Works
 
